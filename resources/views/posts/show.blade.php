@@ -11,7 +11,7 @@
             <div class="w-full px-4 md:w-1/2 lg:w-1/3">
                 <div class="w-full mb-10">
                     <div class="mb-8 overflow-hidden rounded">
-                        <img src="{{ $post->image_url }}" alt="image" class="w-full" />
+                        <img src="{{ asset("/storage/" . $path) }}" alt="image" class="w-full" />
                     </div>
                     <div>
                         <span
@@ -19,14 +19,27 @@
                             {{ $post->published_at }}
                         </span>
                         <h3>
-                            <a href="{{ route('posts.show', $post->id) }}"
-                                class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
+                            <div class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
                                 {{ $post->title }}
-                            </a>
+                            </div>
                         </h3>
                         <p class="text-base text-body-color dark:text-dark-6">
                             {{ $post->content }}
                         </p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap -mx-3">
+                    <div class="w-1/2 px-3">
+                        <a href="{{ route('posts.destroy' , $post)}}"
+                            class="block w-full p-3 text-base font-medium text-center transition border rounded-md border-stroke text-dark dark:text-white hover:border-red-600 hover:bg-red-600 hover:text-white">
+                            Delete
+                        </a>
+                    </div>
+                    <div class="w-1/2 px-3">
+                        <a href="{{ route('posts.edit' , $post) }}"
+                            class="block w-full p-3 text-base font-medium text-center text-white transition border rounded-md border-primary bg-primary hover:bg-blue-dark">
+                            Update
+                        </a>
                     </div>
                 </div>
             </div>

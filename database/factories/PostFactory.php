@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
             'image_url' => $this->faker->imageUrl(),
-            'published_at' => Carbon::parse($this->faker->dateTimeBetween('-1 year', 'now')),
+            'published_at' => Carbon::parse($this->faker->dateTimeThisYear),
         ];
     }
 }
